@@ -10,7 +10,7 @@ const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:3000';
 
 // 1. Validasi Environment
 if (!process.env.GEMINI_API_KEY) {
-  console.error('❌ ERROR: GEMINI_API_KEY tidak ditemukan di .env!');
+  console.error('ERROR: GEMINI_API_KEY tidak ditemukan di .env!');
   process.exit(1);
 }
 
@@ -96,7 +96,7 @@ io.on('connection', (socket) => {
       socket.join(roomCode);
       socket.data = { ...socket.data, roomCode, isHost: true };
       socket.emit('room_created', { roomCode, questions });
-      console.log(`✅ Room ${roomCode} created for: ${topic}`);
+      console.log(`Room ${roomCode} created for: ${topic}`);
     } catch (err) {
       socket.emit('error', { message: `Gagal meracik soal: ${err.message}` });
     }
