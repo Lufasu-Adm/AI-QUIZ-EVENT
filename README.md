@@ -1,4 +1,4 @@
-# 🧠 AI QUIZ EVENT
+# AI QUIZ EVENT
 
 ## 🎬 Demo
 
@@ -9,7 +9,7 @@ This demo shows the full flow:
 * Questions appear in real‑time
 * Leaderboard updates live
 
-*(Add your demo.gif here later)*
+https://github.com/Lufasu-Adm/AI-QUIZ-EVENT/blob/main/public/0316.gif
 
 ---
 
