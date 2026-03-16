@@ -9,7 +9,9 @@ This demo shows the full flow:
 * Questions appear in real‑time
 * Leaderboard updates live
 
-https://github.com/Lufasu-Adm/AI-QUIZ-EVENT/blob/main/public/0316.gif
+<p align="center">
+  <img src="https://github.com/Lufasu-Adm/AI-QUIZ-EVENT/blob/main/public/0316.gif" width="900"/>
+</p>
 
 ---
 
