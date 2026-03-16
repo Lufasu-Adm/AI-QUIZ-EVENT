@@ -1,65 +1,145 @@
-# 🧠 AI-QUIZ-EVENT
+# 🧠 AI QUIZ EVENT
 
-AI-Quiz-Event adalah platform manajemen acara kuis interaktif modern yang ditenagai oleh Kecerdasan Buatan (AI). Aplikasi ini dirancang untuk memudahkan penyelenggara dalam membuat, mengelola, dan menjalankan sesi kuis secara *real-time* dengan soal-soal yang dapat di-generate otomatis menggunakan AI.
+## 🎬 Demo
 
-## ✨ Fitur Utama
+This demo shows the full flow:
 
-Berikut adalah visualisasi fitur utama yang sedang dalam tahap pengembangan:
+* Host creates quiz using AI
+* Players join using room code
+* Questions appear in real‑time
+* Leaderboard updates live
 
-### 1. 🤖 AI Question Generator
-
-![AI Question Generator](docs/images/feature-ai-question-generator.png)
-
-<!-- Ganti gambar ini dengan screenshot fitur AI Question Generator -->
-
-*Fitur ini memungkinkan pembuatan soal kuis secara otomatis berdasarkan topik atau materi tertentu menggunakan integrasi AI, sangat cocok untuk mempercepat persiapan acara.*
-
-### 2. ⚡ Real-Time Quiz Sessions
-
-![Real Time Quiz Session](docs/images/feature-realtime-quiz.png)
-
-<!-- Ganti gambar ini dengan screenshot fitur sesi kuis real-time -->
-
-*Peserta dapat mengikuti kuis secara langsung dengan sinkronisasi waktu nyata antara layar penyelenggara dan peserta.*
-
-### 3. 📊 Live Leaderboard
-
-![Live Leaderboard](docs/images/feature-live-leaderboard.png)
-
-<!-- Ganti gambar ini dengan screenshot leaderboard peserta -->
-
-*Papan peringkat interaktif yang terus diperbarui setiap kali peserta menjawab soal, menambah keseruan dan kompetisi.*
-
-### 4. 🎨 Modern & Responsive UI
-
-![Modern Responsive UI](docs/images/feature-ui-responsive.png)
-
-<!-- Ganti gambar ini dengan screenshot tampilan UI aplikasi -->
-
-*Antarmuka pengguna yang mulus dan responsif, dibangun dengan Next.js dan Tailwind CSS, memberikan pengalaman terbaik di PC maupun smartphone.*
+*(Add your demo.gif here later)*
 
 ---
 
-## 🛠️ Tech Stack
+## ✨ Core Features
 
-Proyek ini dibangun menggunakan arsitektur modern dengan pemisahan *Client* dan *Server*.
+### 🤖 AI Question Generator
 
-### Frontend (Client)
+Generate quiz questions automatically from any topic.
+Host only needs to input:
+
+* Quiz topic
+* Number of questions
+* Time per question
+
+The AI will generate:
+
+* Questions
+* Multiple choice answers
+* Correct answer
+
+*Perfect for quickly preparing quizzes for: campus events, webinars, workshops, and ice breaking sessions.*
+
+### ⚡ Real‑Time Quiz Engine
+
+The quiz session runs in real‑time with synchronized timers.
+Features:
+
+* Countdown timer
+* Instant answer submission
+* Synchronized question display
+* Responsive buttons for fast answering
+
+*Suitable for both projector screen and participants' devices.*
+
+### 📱 Player Experience (Mobile Friendly)
+
+Participants answer questions from their own device.
+UI designed for:
+
+* Mobile phones
+* Tablets
+* Laptops
+
+*Large colored buttons make interaction fast and intuitive.*
+
+### 🏆 Live Leaderboard
+
+Leaderboard updates instantly after each question.
+Features:
+
+* Real‑time ranking
+* Top player highlight
+* Score comparison
+
+*This adds excitement and competition during the event.*
+
+### 🚪 Quiz Lobby System
+
+Players join the quiz room using a unique room code.
+Lobby features:
+
+* Room code display
+* Connected player list
+* Host control to start quiz
+
+*Perfect for large event coordination.*
+
+---
+
+## 🏗 System Architecture
+
+```mermaid
+flowchart TD
+    Host[Quiz Host UI]
+    Player[Player Devices]
+    Frontend[Next.js Frontend]
+    Backend[Node.js API Server]
+    Socket[Realtime Engine
+Socket.io]
+    AI[AI Question Generator]
+    DB[(Database)]
+
+    Host --> Frontend
+    Player --> Frontend
+
+    Frontend --> Backend
+    Frontend --> Socket
+
+    Backend --> AI
+    Backend --> DB
+
+    Socket --> Frontend
+
+    AI --> Backend
+```
+
+### Architecture highlights
+
+* **Next.js** handles UI rendering
+* **Express API** handles quiz logic
+* **WebSocket / Socket.io** handles realtime updates
+* **AI API** generates questions
+* **Database** stores sessions and scores
+
+---
+
+## ⚙️ Tech Stack
+
+### Frontend
 
 * Next.js (App Router)
 * TypeScript
 * Tailwind CSS
 
-### Backend (Server)
+### Backend
 
 * Node.js
 * Express.js
 
+### Realtime
+
+* WebSocket / Socket.io
+
+### AI
+
+* LLM API (OpenAI or compatible models)
+
 ---
 
-## 🚀 Cara Menjalankan Proyek Secara Lokal
-
-Pastikan Node.js sudah terinstal di komputer Anda.
+## 🚀 Running Locally
 
 ### 1. Clone Repository
 
@@ -68,29 +148,27 @@ git clone https://github.com/Lufasu-Adm/AI-QUIZ-EVENT.git
 cd AI-QUIZ-EVENT
 ```
 
-### 2. Jalankan Backend Server
+### 2. Start Backend
 
 ```bash
 cd server
 npm install
 
-# konfigurasi environment
-# buat file .env dan isi variable seperti PORT dan API_KEY
+# configure environment
+cp .env.example .env
 
 npm start
-# atau
-node index.js
 ```
 
-Server biasanya berjalan di:
+Backend default:
 
 ```
 http://localhost:5000
 ```
 
-### 3. Jalankan Frontend Client
+### 3. Start Frontend
 
-Buka terminal baru lalu jalankan:
+Open a new terminal:
 
 ```bash
 cd client
@@ -98,7 +176,7 @@ npm install
 npm run dev
 ```
 
-Frontend akan berjalan di:
+Frontend:
 
 ```
 http://localhost:3000
@@ -106,42 +184,58 @@ http://localhost:3000
 
 ---
 
-## 📁 Struktur Proyek
+## 📂 Project Structure
 
 ```
 AI-QUIZ-EVENT
-│
-├── client/          # Next.js frontend
-│   ├── app/
-│   ├── components/
-│   └── styles/
-│
-├── server/          # Express backend
-│   ├── routes/
-│   ├── controllers/
-│   └── services/
-│
+├── client/                # Next.js frontend
+├── server/                # Express backend
+├── docs/
+│   ├─ demo/
+│   │   └─ demo.gif
+│   └─ images/
+│       ├─ hero-banner.png
+│       ├─ feature-ai-generator.png
+│       ├─ feature-realtime-quiz.png
+│       ├─ feature-player-pov.png
+│       ├─ feature-live-leaderboard.png
+│       └─ feature-lobby.png
 └── README.md
 ```
 
 ---
 
-## 🌐 Use Case
+## 💡 Use Cases
 
-Platform ini cocok digunakan untuk:
+AI Quiz Event can be used for:
 
-* Event kampus
-* Webinar interaktif
-* Ice breaking seminar
-* Kuis edukasi sekolah
-* Kompetisi online
+* University events
+* Online webinars
+* Classroom quizzes
+* Company training
+* Hackathon ice breakers
+* Community competitions
 
-Dengan AI Question Generator, penyelenggara tidak perlu lagi membuat ratusan soal secara manual.
+---
+
+## 📈 Future Improvements
+
+Planned features:
+
+* [ ] AI difficulty scaling
+* [ ] Analytics dashboard
+* [ ] Multiplayer team mode
+* [ ] Question import from PDF
+* [ ] Large scale events (1000+ players)
 
 ---
 
 ## 👨‍💻 Author
 
-Dibuat dengan semangat oleh **Jordan Wijayanto**
+Created by **Jordan Wijayanto**
 
-GitHub: [https://github.com/Lufasu-Adm](https://github.com/Lufasu-Adm)
+GitHub: @Lufasu-Adm
+
+---
+
+⭐ If you like this project, consider giving it a star on GitHub!
