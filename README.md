@@ -10,7 +10,7 @@ This demo shows the full flow:
 * Leaderboard updates live
 
 <p align="center">
-  <img src="https://github.com/Lufasu-Adm/AI-QUIZ-EVENT/blob/main/public/0316.gif" width="900"/>
+  <img src="https://github.com/Lufasu-Adm/AI-QUIZ-EVENT/blob/main/docs/demo/0316.gif" width="900"/>
 </p>
 
 ---
